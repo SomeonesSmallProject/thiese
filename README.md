@@ -13,3 +13,5 @@ The website depended on .Net 8.0 and python >=3.10, so you should install it fir
 There is a json file in the `wwwroot` folder, which contain all needed configuration of the website. You can change it to fit your need.
 
 I hope you will have a nice day, and God bless you and me. Thanks for reading.
+
+The LICENSE used the BSD 3-Clause License, but actually you can do anything you want with this project.
