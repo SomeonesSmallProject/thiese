@@ -1,0 +1,49 @@
+﻿@{
+    var modelProperties = ViewData["ModelProperties"] as Dictionary<string,string>;
+}
+
+@using (Html.BeginForm("SubmitForm", "Mol", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <select id="Selected" name="Selected">
+        @foreach (var field in modelProperties.Keys)
+        {
+                <option value=@field>@field</option>
+        }
+        </select>
+    </div>
+    <div>
+        <input type="hidden"  name="drawed" id="drawed" value="">
+        <script>
+            // 插入你的 JavaScript 代码
+            ChemDoodle.ELEMENT['H'].jmolColor = 'black';
+            ChemDoodle.ELEMENT['S'].jmolColor = '#B9A130';
+            let sketcher = new ChemDoodle.SketcherCanvas('sketcher', 500, 300, { useServices: false, oneMolecule: false, resizable: true, requireStartingAtom: false });
+            sketcher.styles.atoms_displayTerminalCarbonLabels_2D = true;
+            sketcher.styles.atoms_useJMOLColors = true;
+            sketcher.styles.bonds_clearOverlaps_2D = true;
+            sketcher.styles.shapes_color = 'c10000';
+            sketcher.oldFunc = sketcher.checksOnAction;
+            sketcher.checksOnAction = function () {
+                this.oldFunc();
+                let mol = this.getMolecule();
+                let mol_file = ChemDoodle.writeMOL(mol);
+                document.getElementById('drawed').value = mol_file;
+            };
+            sketcher.repaint();
+        </script>
+    </div>
+    <div>
+        <label for="SMILES">SMILES:</label>
+        <input name="SMILES" id="SMILES" value="" />
+    </div>
+    <div>
+            <label for="file">Select file:</label>
+        <input type="file" name="File" id="File" >
+    </div>
+    <button type="submit">Submit</button>
+}
+
+@{
+}

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - thies</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/thies.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/chem/ChemDoodleWeb.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/chem/uis/jquery-ui-1.11.4.css" asp-append-version="true" />
+    <script type="text/javascript" src="~/lib/chem/ChemDoodleWeb.js"></script>
+    <script type="text/javascript" src="~/lib/chem/uis/ChemDoodleWeb-uis.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        table {
+            border-collapse: collapse; /* 合并边框 */
+        }
+
+        td {
+            border: 1px solid black; /* 设置单元格边框 */
+            padding: 8px; /* 设置单元格内边距 */
+        }
+
+        img {
+            max-width: 60%; /* 图片最大宽度为其父元素的宽度 */
+            height: auto; /* 图片高度自动调整以保持宽高比 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">thies</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
